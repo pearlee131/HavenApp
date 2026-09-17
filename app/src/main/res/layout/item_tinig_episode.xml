@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="160dp"
+    android:layout_height="190dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="false">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <!-- ========================================= -->
+        <!-- EPISODE THUMBNAIL -->
+        <!-- ========================================= -->
+
+        <ImageView
+            android:id="@+id/imgEpisodeThumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:contentDescription="Episode thumbnail"
+            android:scaleType="centerCrop" />
+
+
+        <!-- ========================================= -->
+        <!-- EPISODE CONTENT -->
+        <!-- ========================================= -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="9dp"
+            android:paddingTop="7dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="2dp">
+
+
+            <!-- ===================================== -->
+            <!-- TITLE -->
+            <!-- ===================================== -->
+
+            <TextView
+                android:id="@+id/txtEpisodeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_semibold"
+                android:maxLines="2"
+                android:text="Tinig ng Kababaihan episode title"
+                android:textColor="#17113F"
+                android:textSize="12sp" />
+
+
+            <!-- ===================================== -->
+            <!-- DATE -->
+            <!-- ===================================== -->
+
+            <TextView
+                android:id="@+id/txtEpisodeDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Sep 2, 2026"
+                android:textColor="#6C2BD9"
+                android:textSize="10sp" />
+
+
+            <!-- ===================================== -->
+            <!-- DURATION -->
+            <!-- ===================================== -->
+
+            <TextView
+                android:id="@+id/txtEpisodeDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="25 min"
+                android:textColor="#756D91"
+                android:textSize="10sp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

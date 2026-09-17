@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="160dp"
+    android:layout_height="190dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <!-- ========================================= -->
+        <!-- ANNOUNCEMENT THUMBNAIL -->
+        <!-- ========================================= -->
+
+        <ImageView
+            android:id="@+id/imgAnnouncement"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:background="#EEE8F8"
+            android:contentDescription="Announcement image"
+            android:scaleType="centerCrop" />
+
+
+        <!-- ========================================= -->
+        <!-- ANNOUNCEMENT CONTENT -->
+        <!-- ========================================= -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="9dp"
+            android:paddingTop="7dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="7dp">
+
+
+            <!-- ===================================== -->
+            <!-- SOURCE + CATEGORY -->
+            <!-- ===================================== -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <!-- SOURCE -->
+
+                <TextView
+                    android:id="@+id/txtAnnouncementSource"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:maxLines="1"
+                    android:text="IACVAWC"
+                    android:textColor="#6C2BD9"
+                    android:textSize="10sp" />
+
+
+                <!-- SEPARATOR -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="•"
+                    android:textColor="#8A8A8A"
+                    android:textSize="10sp" />
+
+
+                <!-- CATEGORY -->
+
+                <TextView
+                    android:id="@+id/txtAnnouncementCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins_regular"
+                    android:maxLines="1"
+                    android:text="VAWC"
+                    android:textColor="#777777"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+
+            <!-- ===================================== -->
+            <!-- TITLE -->
+            <!-- ===================================== -->
+
+            <TextView
+                android:id="@+id/txtAnnouncementTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="0dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="top"
+                android:maxLines="2"
+                android:text="Latest announcement title goes here"
+                android:textColor="#17113F"
+                android:textSize="12sp" />
+
+
+            <!-- ===================================== -->
+            <!-- DATE + ARROW -->
+            <!-- ===================================== -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <!-- DATE -->
+
+                <TextView
+                    android:id="@+id/txtAnnouncementDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Sep 2, 2026"
+                    android:textColor="#756D91"
+                    android:textSize="10sp" />
+
+
+                <!-- ARROW -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text=">"
+                    android:textColor="#6C2BD9"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

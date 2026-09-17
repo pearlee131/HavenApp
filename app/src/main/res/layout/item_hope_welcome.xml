@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="14dp">
+
+
+    <!-- ===================================================== -->
+    <!-- HOPE WELCOME -->
+    <!-- ===================================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <!-- HOPE MASCOT -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardHopeWelcomeAvatar"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="36dp"
+            app:cardElevation="2dp"
+            app:strokeColor="#E9DFFF"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:id="@+id/imgHopeWelcome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Hope"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_chatbot" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- TITLE -->
+
+        <TextView
+            android:id="@+id/txtHopeWelcomeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Hi, I'm Hope!"
+            android:textColor="#32118F"
+            android:textSize="18sp" />
+
+
+        <!-- GREETING -->
+
+        <TextView
+            android:id="@+id/txtHopeWelcomeSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:lineSpacingExtra="2dp"
+            android:text="Your Haven Assistant. I can help you find trusted information, resources, and support within HavenApp."
+            android:textColor="#625B73"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+
+    <!-- ===================================================== -->
+    <!-- SUGGESTED QUESTIONS -->
+    <!-- ===================================================== -->
+
+    <TextView
+        android:id="@+id/txtSuggestedQuestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="7dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="You can ask me about:"
+        android:textColor="#17113F"
+        android:textSize="12sp" />
+
+
+    <!-- QUESTION 1 -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/suggestionRA9262"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#E6DFF3"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingStart="14dp"
+            android:paddingTop="11dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="11dp"
+            android:text="What is RA 9262?"
+            android:textColor="#32118F"
+            android:textSize="11sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- QUESTION 2 -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/suggestionTypesOfAbuse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#E6DFF3"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingStart="14dp"
+            android:paddingTop="11dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="11dp"
+            android:text="What are the types of abuse?"
+            android:textColor="#32118F"
+            android:textSize="11sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- QUESTION 3 -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/suggestionProtectionOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#E6DFF3"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingStart="14dp"
+            android:paddingTop="11dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="11dp"
+            android:text="What is a protection order?"
+            android:textColor="#32118F"
+            android:textSize="11sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- QUESTION 4 -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/suggestionFileReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#E6DFF3"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingStart="14dp"
+            android:paddingTop="11dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="11dp"
+            android:text="How can I report an incident?"
+            android:textColor="#32118F"
+            android:textSize="11sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- QUESTION 5 -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/suggestionEmergencyHotlines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#E6DFF3"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingStart="14dp"
+            android:paddingTop="11dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="11dp"
+            android:text="Where can I find emergency hotlines?"
+            android:textColor="#32118F"
+            android:textSize="11sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- QUESTION 6 -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/suggestionSupportSomeone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#E6DFF3"
+        app:strokeWidth="1dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingStart="14dp"
+            android:paddingTop="11dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="11dp"
+            android:text="How can I help someone experiencing abuse?"
+            android:textColor="#32118F"
+            android:textSize="11sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

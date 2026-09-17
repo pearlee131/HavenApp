@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F6FF">
+
+    <!-- ===================================================== -->
+    <!-- HEADER -->
+    <!-- ===================================================== -->
+
+    <ImageView
+        android:id="@+id/btnNotificationDetailsBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="34dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="Back"
+        android:focusable="true"
+        android:padding="9dp"
+        android:src="@drawable/exit_ic"
+        app:tint="#32118F"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNotificationDetailsHeader"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="58dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Notification Details"
+        android:textColor="#17113F"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnNotificationDetailsBack"
+        app:layout_constraintTop_toTopOf="@id/btnNotificationDetailsBack" />
+
+
+    <!-- ===================================================== -->
+    <!-- STATUS ICON -->
+    <!-- ===================================================== -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardNotificationDetailsIcon"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="54dp"
+        app:cardBackgroundColor="#EEE3FF"
+        app:cardCornerRadius="46dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtNotificationDetailsHeader">
+
+        <ImageView
+            android:id="@+id/imgNotificationDetailsIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Report update"
+            android:padding="25dp"
+            android:src="@drawable/ic_articles"
+            app:tint="#6C2BD9" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- ===================================================== -->
+    <!-- NOTIFICATION TITLE -->
+    <!-- ===================================================== -->
+
+    <TextView
+        android:id="@+id/txtNotificationDetailsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Report Under Review"
+        android:textColor="#17113F"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardNotificationDetailsIcon" />
+
+
+    <!-- ===================================================== -->
+    <!-- DATE AND TIME -->
+    <!-- ===================================================== -->
+
+    <TextView
+        android:id="@+id/txtNotificationDetailsTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Today, 2:15 PM"
+        android:textColor="#6E6685"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtNotificationDetailsTitle" />
+
+
+    <!-- ===================================================== -->
+    <!-- MESSAGE CARD -->
+    <!-- ===================================================== -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardNotificationDetailsMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="22dp"
+        app:cardBackgroundColor="#F0E9FC"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtNotificationDetailsTime">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="205dp"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="24dp">
+
+            <!-- Main dynamic notification message -->
+
+            <TextView
+                android:id="@+id/txtNotificationDetailsMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Your report #VAWC-2026-0021 is now under review."
+                android:textColor="#17113F"
+                android:textSize="15sp" />
+
+
+            <!-- Supporting message -->
+
+            <TextView
+                android:id="@+id/txtNotificationDetailsSupportingMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingExtra="3dp"
+                android:text="Our team is currently reviewing the details of your report. You will be notified once there are updates."
+                android:textColor="#514A6A"
+                android:textSize="14sp" />
+
+
+            <!-- Closing -->
+
+            <TextView
+                android:id="@+id/txtNotificationDetailsClosing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Thank you for trusting HavenApp."
+                android:textColor="#514A6A"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- ===================================================== -->
+    <!-- GOT IT BUTTON -->
+    <!-- ===================================================== -->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNotificationGotIt"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Got it"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:backgroundTint="#6C2BD9"
+        app:cornerRadius="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardNotificationDetailsMessage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

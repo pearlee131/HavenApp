@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F5FF">
+
+
+    <!-- ================================================= -->
+    <!-- HEADER -->
+    <!-- Same structure/style as My Reports -->
+    <!-- ================================================= -->
+
+    <LinearLayout
+        android:id="@+id/tinigHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="18dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <!-- TITLE + SUBTITLE -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:text="Tinig ng Kababaihan"
+                android:textColor="#21115D"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <!-- EXIT / BACK -->
+        <!-- Existing ID preserved -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            app:cardBackgroundColor="#F0E9FF"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:contentDescription="Close"
+                android:scaleType="fitCenter"
+                android:src="@drawable/exit_ic" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+
+    <!-- ================================================= -->
+    <!-- SEARCH -->
+    <!-- SAME DESIGN STRUCTURE AS MY REPORTS -->
+    <!-- ================================================= -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/searchContainer"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="18dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#E3DCEF"
+        app:strokeWidth="1dp"
+        app:layout_constraintTop_toBottomOf="@id/tinigHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingEnd="12dp">
+
+
+            <!-- SEARCH ICON -->
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:contentDescription="Search"
+                android:scaleType="fitCenter"
+                android:src="@drawable/search_ic" />
+
+
+            <!-- SEARCH INPUT -->
+            <!-- Existing ID preserved -->
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSearchEpisodes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_vertical"
+                android:hint="Search episodes..."
+                android:includeFontPadding="false"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="0dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:singleLine="true"
+                android:textColor="#21115D"
+                android:textColorHint="#958DAA"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- ================================================= -->
+    <!-- YEAR FILTER -->
+    <!-- Existing ID preserved -->
+    <!-- ================================================= -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerYearFilters"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="18dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/searchContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- ================================================= -->
+    <!-- ALL EPISODES -->
+    <!-- ================================================= -->
+
+    <TextView
+        android:id="@+id/txtAllEpisodesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins_bold"
+        android:includeFontPadding="false"
+        android:text="All Episodes"
+        android:textColor="#21115D"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/recyclerYearFilters"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <!-- ================================================= -->
+    <!-- EPISODE COUNT -->
+    <!-- ================================================= -->
+
+    <TextView
+        android:id="@+id/txtEpisodeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="18dp"
+        android:fontFamily="@font/poppins_regular"
+        android:includeFontPadding="false"
+        android:text="0 episodes"
+        android:textColor="#8A78B8"
+        android:textSize="10sp"
+        app:layout_constraintTop_toTopOf="@id/txtAllEpisodesTitle"
+        app:layout_constraintBottom_toBottomOf="@id/txtAllEpisodesTitle"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- ================================================= -->
+    <!-- SUBTITLE -->
+    <!-- ================================================= -->
+
+    <TextView
+        android:id="@+id/txtEpisodesSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/poppins_regular"
+        android:includeFontPadding="false"
+        android:text="Latest episodes from Tinig ng Kababaihan"
+        android:textColor="#887AA8"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@id/txtAllEpisodesTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <!-- ================================================= -->
+    <!-- EPISODE LIST -->
+    <!-- ================================================= -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerAllEpisodes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="18dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="20dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/txtEpisodesSubtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- ================================================= -->
+    <!-- EMPTY STATE -->
+    <!-- ================================================= -->
+
+    <TextView
+        android:id="@+id/txtEmptyEpisodes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:text="No episodes found."
+        android:textColor="#83769E"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/recyclerAllEpisodes"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerAllEpisodes"
+        app:layout_constraintStart_toStartOf="@id/recyclerAllEpisodes"
+        app:layout_constraintEnd_toEndOf="@id/recyclerAllEpisodes" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

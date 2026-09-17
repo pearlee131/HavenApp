@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="118dp"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <!-- ================================================= -->
+        <!-- REAL YOUTUBE THUMBNAIL -->
+        <!-- ================================================= -->
+
+        <ImageView
+            android:id="@+id/imgEpisodeThumbnail"
+            android:layout_width="116dp"
+            android:layout_height="94dp"
+            android:background="@drawable/bg_tinig_thumbnail_placeholder"
+            android:clipToOutline="true"
+            android:contentDescription="Episode thumbnail"
+            android:scaleType="centerCrop" />
+
+
+        <!-- ================================================= -->
+        <!-- DETAILS -->
+        <!-- ================================================= -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+
+            <!-- DATE -->
+
+            <TextView
+                android:id="@+id/txtEpisodeDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="#6C2BD9"
+                android:textSize="10sp" />
+
+
+            <!-- TITLE -->
+
+            <TextView
+                android:id="@+id/txtEpisodeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
+                android:maxLines="3"
+                android:textColor="#241550"
+                android:textSize="12sp" />
+
+
+            <!-- DURATION -->
+
+            <TextView
+                android:id="@+id/txtEpisodeDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="#776B91"
+                android:textSize="10sp" />
+
+
+
+
+        </LinearLayout>
+
+
+        <!-- ================================================= -->
+        <!-- PLAY BUTTON -->
+        <!-- ================================================= -->
+
+        <ImageView
+            android:id="@+id/btnPlay"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="5dp"
+            android:clickable="true"
+            android:contentDescription="Play episode"
+            android:focusable="true"
+            android:padding="2dp"
+            android:src="@drawable/play_ic" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

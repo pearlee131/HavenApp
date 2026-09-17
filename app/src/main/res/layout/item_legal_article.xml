@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardLegalArticle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="1dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="105dp"
+        android:padding="12dp">
+
+
+        <!-- ============================================= -->
+        <!-- ARTICLE IMAGE -->
+        <!-- ============================================= -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardArticleImage"
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            app:cardBackgroundColor="#F1E8FF"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+            <ImageView
+                android:id="@+id/imgArticleThumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Legal article"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_legalrights" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- ============================================= -->
+        <!-- ARTICLE INFORMATION -->
+        <!-- ============================================= -->
+
+        <LinearLayout
+            android:id="@+id/layoutArticleInformation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/cardArticleImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+            <!-- TITLE -->
+
+            <TextView
+                android:id="@+id/txtArticleTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="What is RA 9262?"
+                android:textColor="#17113F"
+                android:textSize="14sp" />
+
+
+            <!-- SUBTITLE -->
+
+            <TextView
+                android:id="@+id/txtArticleSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="1dp"
+                android:maxLines="2"
+                android:text="Understanding the Anti-Violence Against Women and Their Children Act"
+                android:textColor="#625775"
+                android:textSize="10sp" />
+
+
+            <!-- SOURCE -->
+
+            <TextView
+                android:id="@+id/txtArticleSource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="Philippine Commission on Women"
+                android:textColor="#6C2BD9"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
