@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F6FF">
+
+    <!--================ HEADER =================-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/headerCard"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/profile_header_height"
+        android:layout_marginStart="@dimen/profile_header_margin_horizontal"
+        android:layout_marginTop="@dimen/profile_header_margin_top"
+        android:layout_marginEnd="@dimen/profile_header_margin_horizontal"
+        android:backgroundTint="#4a2297"
+        app:cardCornerRadius="@dimen/profile_header_radius"
+        app:cardElevation="@dimen/profile_header_elevation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/profileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="Profile"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/profile_title_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <!--================ SCROLL CONTENT =================-->
+
+    <ScrollView
+        android:id="@+id/profileScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/headerCard"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/profile_bottom_padding">
+
+            <!--================ PROFILE PICTURE =================-->
+
+            <FrameLayout
+                android:id="@+id/profileContainer"
+                android:layout_width="@dimen/profile_image_container_size"
+                android:layout_height="@dimen/profile_image_container_size"
+                android:layout_marginTop="@dimen/profile_image_margin_top"
+                android:background="@drawable/profile_image_ring">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/userImage"
+                    android:layout_width="@dimen/profile_image_size"
+                    android:layout_height="@dimen/profile_image_size"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/dp"
+                    app:shapeAppearanceOverlay="@style/CircleImage" />
+
+                <ImageView
+                    android:id="@+id/editProfile"
+                    android:layout_width="@dimen/profile_edit_size"
+                    android:layout_height="@dimen/profile_edit_size"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/profile_edit_margin"
+                    android:background="@drawable/circle_purple"
+                    android:padding="@dimen/profile_edit_padding"
+                    android:src="@drawable/ic_edit" />
+
+            </FrameLayout>
+
+
+            <!--================ NAME =================-->
+
+            <TextView
+                android:id="@+id/profileName"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/profile_name_height"
+                android:layout_marginTop="@dimen/profile_name_margin_top"
+                android:fontFamily="@font/poppins_regular"
+                android:text="User"
+                android:textColor="#222222"
+                android:textSize="@dimen/profile_name_size"
+                android:textStyle="bold" />
+
+
+            <!--================ EMAIL =================-->
+
+            <TextView
+                android:id="@+id/profileEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="@dimen/profile_email_margin_top"
+                android:text="email@gmail.com"
+                android:textColor="#777777"
+                android:textSize="@dimen/profile_email_size" />
+
+
+            <!--================ SECTION TITLE =================-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_section_margin_top"
+                android:layout_marginStart="@dimen/profile_section_horizontal_margin"
+                android:layout_marginEnd="@dimen/profile_section_horizontal_margin"
+                android:text="Support and Settings"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="#4a2297"
+                android:textStyle="bold"
+                android:textSize="@dimen/profile_section_text_size" />
+
+
+            <!--================ PRIVACY =================-->
+
+            <LinearLayout
+                android:id="@+id/privacyLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_menu_height"
+                android:layout_marginStart="@dimen/profile_menu_horizontal_margin"
+                android:layout_marginTop="@dimen/profile_menu_first_margin_top"
+                android:layout_marginEnd="@dimen/profile_menu_horizontal_margin"
+                android:background="@drawable/menu_item_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/profile_menu_padding_horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/profile_menu_icon_size"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_privacy" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/profile_menu_icon_text_spacing"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Privacy &amp; Security"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/profile_menu_text_size" />
+
+            </LinearLayout>
+
+
+            <!--================ ABOUT =================-->
+
+            <LinearLayout
+                android:id="@+id/aboutLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_menu_height"
+                android:layout_marginStart="@dimen/profile_menu_horizontal_margin"
+                android:layout_marginTop="@dimen/profile_menu_spacing"
+                android:layout_marginEnd="@dimen/profile_menu_horizontal_margin"
+                android:background="@drawable/menu_item_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/profile_menu_padding_horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/profile_menu_icon_size"
+                    android:layout_height="@dimen/profile_menu_icon_size"
+                    android:src="@drawable/ic_about" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/profile_menu_icon_text_spacing"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="About App"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/profile_menu_text_size" />
+
+            </LinearLayout>
+
+
+            <!--================ HELP & SUPPORT =================-->
+
+            <LinearLayout
+                android:id="@+id/helpLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_menu_height"
+                android:layout_marginStart="@dimen/profile_menu_horizontal_margin"
+                android:layout_marginTop="@dimen/profile_menu_spacing"
+                android:layout_marginEnd="@dimen/profile_menu_horizontal_margin"
+                android:background="@drawable/menu_item_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/profile_menu_padding_horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/profile_menu_icon_size"
+                    android:layout_height="@dimen/profile_menu_icon_size"
+                    android:src="@drawable/ic_help" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/profile_menu_icon_text_spacing"
+                    android:text="Help &amp; Support"
+                    android:textSize="@dimen/profile_menu_text_size"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="#333333" />
+
+            </LinearLayout>
+
+
+            <!--================ LOG OUT =================-->
+
+            <LinearLayout
+                android:id="@+id/logoutLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_menu_height"
+                android:layout_marginStart="@dimen/profile_menu_horizontal_margin"
+                android:layout_marginTop="@dimen/profile_menu_spacing"
+                android:layout_marginEnd="@dimen/profile_menu_horizontal_margin"
+                android:background="@drawable/menu_item_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/profile_menu_padding_horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/profile_menu_icon_size"
+                    android:layout_height="@dimen/profile_menu_icon_size"
+                    android:src="@drawable/ic_logout" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/profile_menu_icon_text_spacing"
+                    android:text="Log Out"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/profile_menu_text_size"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="#E53935" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- ================================================= -->
+    <!-- FLOATING / MOVABLE HOPE ASSISTANT -->
+    <!-- ================================================= -->
+
+    <ImageView
+        android:id="@+id/cardHopeAssistant"
+        android:layout_width="78dp"
+        android:layout_height="78dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="10dp"
+        android:background="@null"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="Open Hope Assistant"
+        android:elevation="12dp"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_chatbot"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!--================ BOTTOM NAVIGATION =================-->
+
+    <!--================ BOTTOM NAVIGATION =================-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottomNavbar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/navbar_height"
+        android:layout_marginStart="@dimen/navbar_margin_horizontal"
+        android:layout_marginEnd="@dimen/navbar_margin_horizontal"
+        android:layout_marginBottom="@dimen/navbar_margin_bottom"
+        android:backgroundTint="#F0E8FF"
+        app:cardCornerRadius="35dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!--================ HOME =================-->
+
+            <LinearLayout
+                android:id="@+id/navHome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/homeIcon"
+                    android:layout_width="@dimen/navbar_icon_size"
+                    android:layout_height="@dimen/navbar_icon_size"
+                    android:src="@drawable/home_button" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/navbar_text_margin_top"
+                    android:text="Home"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/navbar_text_size" />
+
+            </LinearLayout>
+
+
+            <!--================ SUPPORT =================-->
+
+            <LinearLayout
+                android:id="@+id/navSupport"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/navbar_icon_size"
+                    android:layout_height="@dimen/navbar_icon_size"
+                    android:src="@drawable/support_button" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/navbar_text_margin_top"
+                    android:text="Support"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/navbar_text_size" />
+
+            </LinearLayout>
+
+
+            <!--================ EXPLORE =================-->
+
+            <LinearLayout
+                android:id="@+id/navExplore"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/navbar_icon_size"
+                    android:layout_height="@dimen/navbar_icon_size"
+                    android:src="@drawable/explore_button" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/navbar_text_margin_top"
+                    android:text="Explore"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/navbar_text_size" />
+
+            </LinearLayout>
+
+
+            <!--================ PROFILE =================-->
+
+            <LinearLayout
+                android:id="@+id/navProfile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/navbar_icon_size"
+                    android:layout_height="@dimen/navbar_icon_size"
+                    android:src="@drawable/profile_button" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/navbar_text_margin_top"
+                    android:text="Profile"
+                    android:textColor="#6C2BD9"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/navbar_text_size" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

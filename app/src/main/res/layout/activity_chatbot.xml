@@ -19,7 +19,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="18dp"
-        app:cardBackgroundColor="#6C2BD9"
+        app:cardBackgroundColor="#4a2297"
         app:cardCornerRadius="18dp"
         app:cardElevation="0dp"
         app:strokeWidth="0dp"
@@ -50,7 +50,7 @@
                     android:id="@+id/imgHopeHeader"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="8dp"
+                    android:padding="3dp"
                     android:contentDescription="Hope"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_chatbot" />
@@ -68,7 +68,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:text="Hope"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 app:layout_constraintBottom_toTopOf="@id/txtHopeSubtitle"
                 app:layout_constraintStart_toEndOf="@id/cardHopeAvatar"
                 app:layout_constraintTop_toTopOf="@id/cardHopeAvatar"
@@ -81,30 +81,32 @@
                 android:id="@+id/txtHopeSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-8dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Your Haven Assistant"
+                android:text="Your HavenApp Assistant"
                 android:textColor="#E9DFFF"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/cardHopeAvatar"
                 app:layout_constraintStart_toStartOf="@id/txtHopeTitle"
                 app:layout_constraintTop_toBottomOf="@id/txtHopeTitle" />
 
 
-            <!-- MENU -->
+            <!-- EXIT BUTTON -->
 
-            <ImageButton
-                android:id="@+id/btnHopeMenu"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Hope menu"
-                android:padding="9dp"
-                android:src="@drawable/ic_menu"
+            <ImageView
+                android:id="@+id/btnHopeExit"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:padding="7dp"
+                android:layout_marginRight="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Close Hope"
+                android:src="@drawable/exit_ic"
                 app:tint="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -203,12 +205,13 @@
                 android:layout_height="match_parent"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Send message"
-                android:padding="12dp"
-                android:src="@drawable/ic_send"
-                 />
+                android:padding="11dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/send_ic" />
 
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

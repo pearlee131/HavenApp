@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Outer soft ring -->
+    <item>
+        <shape android:shape="oval">
+
+            <solid android:color="#33D80000"/>
+
+            <size
+                android:width="250dp"
+                android:height="250dp"/>
+
+        </shape>
+    </item>
+
+    <!-- Inner ring -->
+    <item
+        android:left="25dp"
+        android:top="25dp"
+        android:right="25dp"
+        android:bottom="25dp">
+
+        <shape android:shape="oval">
+
+            <solid android:color="#55FF0000"/>
+
+        </shape>
+
+    </item>
+
+    <!-- Transparent center -->
+    <item
+        android:left="55dp"
+        android:top="55dp"
+        android:right="55dp"
+        android:bottom="55dp">
+
+        <shape android:shape="oval">
+
+            <solid android:color="@android:color/transparent"/>
+
+            <stroke
+                android:width="3dp"
+                android:color="#D80000"/>
+
+        </shape>
+
+    </item>
+
+</layer-list>

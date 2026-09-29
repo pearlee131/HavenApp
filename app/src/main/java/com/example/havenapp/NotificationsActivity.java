@@ -49,6 +49,8 @@ public class NotificationsActivity extends AppCompatActivity {
 
     private View layoutNotificationsEmpty;
 
+    private View cardHopeAssistant;
+
 
     // =========================================================
     // ADAPTER
@@ -114,6 +116,25 @@ public class NotificationsActivity extends AppCompatActivity {
         setContentView(
                 R.layout.activity_notifications
         );
+
+
+        // =====================================================
+        // HOPE ASSISTANT
+        // =====================================================
+
+        cardHopeAssistant =
+                findViewById(
+                        R.id.cardHopeAssistant
+                );
+
+        if (cardHopeAssistant != null) {
+
+            ChatbotFloatingHelper.setup(
+                    this,
+                    cardHopeAssistant
+            );
+        }
+
 
         initializeViews();
 

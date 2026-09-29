@@ -9,49 +9,83 @@
 
 
     <!-- ================================================= -->
-    <!-- HEADER -->
+    <!-- PURPLE ROUNDED HEADER -->
+    <!-- SAME STYLE AS EDUCATIONAL ARTICLES -->
     <!-- ================================================= -->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/articleDetailsHeader"
         android:layout_width="0dp"
         android:layout_height="72dp"
-        android:background="#6C2BD9"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="18dp"
+        app:cardBackgroundColor="#4a2297"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="18dp"
+            android:paddingEnd="12dp">
 
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:padding="11dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:contentDescription="Back"
-            android:src="@drawable/exit_ic"
-            app:tint="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            <TextView
+                android:id="@+id/txtHeaderTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:text="Legal Rights"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/txtArticleHeaderSubtitle"
+                app:layout_constraintEnd_toStartOf="@id/btnBack"
+                app:layout_constraintVertical_chainStyle="packed" />
 
+            <TextView
+                android:id="@+id/txtArticleHeaderSubtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Know your rights. Stay informed."
+                android:textColor="#E9DFFF"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@id/txtHeaderTitle"
+                app:layout_constraintTop_toBottomOf="@id/txtHeaderTitle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnBack" />
 
-        <TextView
-            android:id="@+id/txtHeaderTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:includeFontPadding="false"
-            android:text="Legal Rights"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:padding="9dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Close"
+                android:src="@drawable/exit_ic"
+                app:tint="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 
     <!-- ================================================= -->
@@ -100,31 +134,6 @@
 
 
             <!-- ========================================= -->
-            <!-- ARTICLE HERO -->
-            <!-- ========================================= -->
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardArticleHero"
-                android:layout_width="match_parent"
-                android:layout_height="175dp"
-                app:cardBackgroundColor="#EFE4FF"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="0dp">
-
-
-                <ImageView
-                    android:id="@+id/imgArticleHero"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="Legal Rights article"
-                    android:padding="35dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_legalrights" />
-
-            </androidx.cardview.widget.CardView>
-
-
-            <!-- ========================================= -->
             <!-- CATEGORY -->
             <!-- ========================================= -->
 
@@ -132,7 +141,6 @@
                 android:id="@+id/txtArticleCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
                 android:background="@drawable/bg_legal_category_chip"
                 android:fontFamily="@font/poppins_semibold"
                 android:includeFontPadding="false"
@@ -295,24 +303,6 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
-
-            <!-- ========================================= -->
-            <!-- DISCLAIMER -->
-            <!-- ========================================= -->
-
-            <TextView
-                android:id="@+id/txtLegalDisclaimer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
-                android:fontFamily="@font/poppins_regular"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:lineSpacingExtra="1dp"
-                android:text="This information is provided for educational purposes only and does not constitute legal advice."
-                android:textColor="#81778E"
-                android:textSize="9sp" />
 
 
         </LinearLayout>

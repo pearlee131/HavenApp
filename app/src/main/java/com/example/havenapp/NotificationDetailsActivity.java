@@ -20,7 +20,7 @@ public class NotificationDetailsActivity extends AppCompatActivity {
     // VIEWS
     // =========================================================
 
-    private View btnNotificationDetailsBack;
+    private View cardHopeAssistant;
 
     private ImageView imgNotificationDetailsIcon;
 
@@ -70,6 +70,24 @@ public class NotificationDetailsActivity extends AppCompatActivity {
         );
 
 
+        // =====================================================
+        // HOPE ASSISTANT
+        // =====================================================
+
+        cardHopeAssistant =
+                findViewById(
+                        R.id.cardHopeAssistant
+                );
+
+        if (cardHopeAssistant != null) {
+
+            ChatbotFloatingHelper.setup(
+                    this,
+                    cardHopeAssistant
+            );
+        }
+
+
         initializeViews();
 
         readNotificationData();
@@ -85,12 +103,6 @@ public class NotificationDetailsActivity extends AppCompatActivity {
     // =========================================================
 
     private void initializeViews() {
-
-        btnNotificationDetailsBack =
-                findViewById(
-                        R.id.btnNotificationDetailsBack
-                );
-
 
         imgNotificationDetailsIcon =
                 findViewById(
@@ -233,8 +245,6 @@ public class NotificationDetailsActivity extends AppCompatActivity {
 
         // -----------------------------------------------------
         // MAIN MESSAGE
-        //
-        // This comes directly from report_notifications.message
         // -----------------------------------------------------
 
         if (notificationMessage.trim().isEmpty()) {
@@ -274,7 +284,7 @@ public class NotificationDetailsActivity extends AppCompatActivity {
 
 
         // -----------------------------------------------------
-        // CLOSING
+        // CLOSING MESSAGE
         // -----------------------------------------------------
 
         txtNotificationDetailsClosing.setText(
@@ -285,14 +295,11 @@ public class NotificationDetailsActivity extends AppCompatActivity {
 
 
         // -----------------------------------------------------
-        // ICON
-        //
-        // For now all report progress notifications use the
-        // same HavenApp report/document icon from the prototype.
+        // REPORT ICON
         // -----------------------------------------------------
 
         imgNotificationDetailsIcon.setImageResource(
-                R.drawable.ic_articles
+                R.drawable.ic_report
         );
     }
 
@@ -316,7 +323,7 @@ public class NotificationDetailsActivity extends AppCompatActivity {
 
                 return "Your report has been received by HavenApp. "
                         + "You will be notified when there are updates "
-                        + "to its status.";
+                        + "to its status";
 
 
             case "under_review":
@@ -522,6 +529,7 @@ public class NotificationDetailsActivity extends AppCompatActivity {
 
 
             if (notificationDate == null) {
+
                 return "";
             }
 
@@ -550,7 +558,9 @@ public class NotificationDetailsActivity extends AppCompatActivity {
                             == today.get(
                             java.util.Calendar.YEAR
                     )
+
                             &&
+
                             notificationCalendar.get(
                                     java.util.Calendar.DAY_OF_YEAR
                             )
@@ -602,12 +612,6 @@ public class NotificationDetailsActivity extends AppCompatActivity {
     // =========================================================
 
     private void setupActions() {
-
-        btnNotificationDetailsBack
-                .setOnClickListener(
-                        v -> finish()
-                );
-
 
         btnNotificationGotIt
                 .setOnClickListener(

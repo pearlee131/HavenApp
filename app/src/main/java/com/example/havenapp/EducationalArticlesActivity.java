@@ -45,6 +45,8 @@ public class EducationalArticlesActivity
 
     private View layoutEducationalEmpty;
 
+    private View cardHopeAssistant;
+
 
     // =====================================================
     // DATA
@@ -94,6 +96,8 @@ public class EducationalArticlesActivity
 
         setupAPI();
 
+        setupHopeAssistant();
+
         loadEducationalArticles();
     }
 
@@ -120,6 +124,12 @@ public class EducationalArticlesActivity
                 findViewById(
                         R.id.layoutEducationalEmpty
                 );
+
+
+        cardHopeAssistant =
+                findViewById(
+                        R.id.cardHopeAssistant
+                );
     }
 
 
@@ -135,6 +145,25 @@ public class EducationalArticlesActivity
 
             finish();
         });
+    }
+
+
+    // =====================================================
+    // HOPE ASSISTANT
+    // =====================================================
+
+    private void setupHopeAssistant() {
+
+        if (cardHopeAssistant == null) {
+
+            return;
+        }
+
+
+        ChatbotFloatingHelper.setup(
+                this,
+                cardHopeAssistant
+        );
     }
 
 

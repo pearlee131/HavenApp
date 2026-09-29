@@ -45,6 +45,8 @@ public class LegalRightsActivity extends AppCompatActivity {
 
     private View layoutLegalEmpty;
 
+    private View cardHopeAssistant;
+
 
     // =====================================================
     // ARTICLES
@@ -89,6 +91,13 @@ public class LegalRightsActivity extends AppCompatActivity {
         // -------------------------------------------------
 
         setupLegalArticles();
+
+
+        // -------------------------------------------------
+        // HOPE ASSISTANT
+        // -------------------------------------------------
+
+        setupHopeAssistant();
     }
 
 
@@ -103,6 +112,31 @@ public class LegalRightsActivity extends AppCompatActivity {
         ).setOnClickListener(v ->
 
                 finish()
+        );
+    }
+
+
+    // =====================================================
+    // HOPE ASSISTANT
+    // =====================================================
+
+    private void setupHopeAssistant() {
+
+        cardHopeAssistant =
+                findViewById(
+                        R.id.cardHopeAssistant
+                );
+
+
+        if (cardHopeAssistant == null) {
+
+            return;
+        }
+
+
+        ChatbotFloatingHelper.setup(
+                this,
+                cardHopeAssistant
         );
     }
 

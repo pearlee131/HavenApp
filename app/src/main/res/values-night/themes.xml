@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!-- Base dark application theme -->
+    <style name="Base.Theme.HavenApp" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Android 12+ System Splash Screen -->
+        <item name="android:windowSplashScreenBackground">@color/white</item>
+
+        <!-- Remove small default splash icon -->
+        <item name="android:windowSplashScreenAnimatedIcon">@null</item>
+
+        <!-- Splash icon background -->
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/white</item>
+
+
+    </style>
+
+
+</resources>

@@ -268,13 +268,7 @@ public class EmergencyHotlineAdapter
                 );
 
         btnCopy.setImageResource(
-                android.R.drawable.ic_menu_set_as
-        );
-
-        btnCopy.setColorFilter(
-                Color.parseColor(
-                        "#6C2BD9"
-                )
+                R.drawable.ic_copy
         );
 
         btnCopy.setPadding(

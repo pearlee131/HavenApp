@@ -2,20 +2,15 @@ package com.example.havenapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.ImageViewCompat;
 import androidx.core.widget.NestedScrollView;
 
-import com.bumptech.glide.Glide;
 import com.example.havenapp.api.EducationalArticleAPI;
 import com.example.havenapp.api.SupabaseClient;
 import com.example.havenapp.model.EducationalArticle;
@@ -49,8 +44,6 @@ public class EducationalArticleDetailsActivity
     private NestedScrollView articleDetailsScroll;
 
     private View layoutArticleError;
-
-    private ImageView imgArticleHero;
 
     private TextView txtArticleCategory;
 
@@ -138,12 +131,6 @@ public class EducationalArticleDetailsActivity
         layoutArticleError =
                 findViewById(
                         R.id.layoutArticleError
-                );
-
-
-        imgArticleHero =
-                findViewById(
-                        R.id.imgArticleHero
                 );
 
 
@@ -618,9 +605,7 @@ public class EducationalArticleDetailsActivity
 
         txtArticleSource
                 .setText(
-                        "Source: "
-                                +
-                                sourceName
+                        sourceName
                 );
 
 
@@ -658,124 +643,6 @@ public class EducationalArticleDetailsActivity
                             View.VISIBLE
                     );
         }
-
-
-        // -------------------------------------------------
-        // THUMBNAIL
-        // -------------------------------------------------
-
-        loadThumbnail(
-                article.getThumbnailUrl()
-        );
-    }
-
-
-    // =====================================================
-    // LOAD THUMBNAIL
-    // =====================================================
-
-    private void loadThumbnail(
-            String thumbnailUrl
-    ) {
-
-        if (
-                thumbnailUrl != null
-                        &&
-                        !thumbnailUrl
-                                .trim()
-                                .isEmpty()
-        ) {
-
-            /*
-             * Remove the purple tint before displaying
-             * a real image.
-             */
-            ImageViewCompat.setImageTintList(
-                    imgArticleHero,
-                    null
-            );
-
-
-            imgArticleHero
-                    .setPadding(
-                            0,
-                            0,
-                            0,
-                            0
-                    );
-
-
-            imgArticleHero
-                    .setScaleType(
-                            ImageView.ScaleType.CENTER_CROP
-                    );
-
-
-            Glide.with(
-                            this
-                    )
-                    .load(
-                            thumbnailUrl
-                    )
-                    .error(
-                            R.drawable.ic_articles
-                    )
-                    .into(
-                            imgArticleHero
-                    );
-
-        } else {
-
-            showDefaultThumbnail();
-        }
-    }
-
-
-    // =====================================================
-    // DEFAULT THUMBNAIL
-    // =====================================================
-
-    private void showDefaultThumbnail() {
-
-        imgArticleHero
-                .setImageResource(
-                        R.drawable.ic_articles
-                );
-
-
-        ImageViewCompat.setImageTintList(
-                imgArticleHero,
-                ColorStateList.valueOf(
-                        Color.parseColor(
-                                "#6C2BD9"
-                        )
-                )
-        );
-
-
-        int padding =
-                (int) (
-                        45
-                                *
-                                getResources()
-                                        .getDisplayMetrics()
-                                        .density
-                );
-
-
-        imgArticleHero
-                .setPadding(
-                        padding,
-                        padding,
-                        padding,
-                        padding
-                );
-
-
-        imgArticleHero
-                .setScaleType(
-                        ImageView.ScaleType.CENTER_INSIDE
-                );
     }
 
 
@@ -826,6 +693,11 @@ public class EducationalArticleDetailsActivity
                 .setVisibility(
                         View.VISIBLE
                 );
+
+        articleDetailsScroll.scrollTo(
+                0,
+                0
+        );
     }
 
 

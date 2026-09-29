@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,13 +43,26 @@ public class ChatbotActivity extends AppCompatActivity {
 
     private ImageButton btnHopeSend;
 
+    private ImageView btnHopeExit;
+
 
     // =====================================================
     // CHAT DATA
     // =====================================================
 
-    private final List<HopeMessage> messages =
+    /*
+     * One Hope conversation for the current app session.
+     *
+     * Closing ChatbotActivity does NOT create a new chat and does NOT
+     * clear the conversation. The same HopeMessage objects are reused,
+     * so rich actions such as Read More, View Hotlines, and File Report
+     * remain intact when Hope is reopened.
+     */
+    private static final List<HopeMessage> SESSION_MESSAGES =
             new ArrayList<>();
+
+    private final List<HopeMessage> messages =
+            SESSION_MESSAGES;
 
     private HopeMessageAdapter hopeMessageAdapter;
 
@@ -107,6 +121,8 @@ public class ChatbotActivity extends AppCompatActivity {
 
         setupSendButton();
 
+        setupExitButton();
+
         showWelcome();
     }
 
@@ -132,6 +148,12 @@ public class ChatbotActivity extends AppCompatActivity {
         btnHopeSend =
                 findViewById(
                         R.id.btnHopeSend
+                );
+
+
+        btnHopeExit =
+                findViewById(
+                        R.id.btnHopeExit
                 );
     }
 
@@ -207,6 +229,18 @@ public class ChatbotActivity extends AppCompatActivity {
 
         btnHopeSend.setOnClickListener(
                 v -> sendTypedMessage()
+        );
+    }
+
+
+    // =====================================================
+    // SETUP EXIT BUTTON
+    // =====================================================
+
+    private void setupExitButton() {
+
+        btnHopeExit.setOnClickListener(
+                v -> finish()
         );
     }
 

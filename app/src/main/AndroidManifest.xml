@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ========================= -->
+    <!-- PERMISSIONS -->
+    <!-- ========================= -->
+
+    <!-- Internet access for Supabase/API -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Vibration for Emergency Panic Button -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Location for Emergency Reporting -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Continuous location tracking during emergency -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- Foreground service for emergency live location -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
+    <!-- Phone Call Permissions -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+    <!-- ========================= -->
+    <!-- DEVICE FEATURES -->
+    <!-- ========================= -->
+
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+
+
+    <!-- ========================= -->
+    <!-- APPLICATION -->
+    <!-- ========================= -->
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HavenApp"
+        android:windowSoftInputMode="adjustNothing">
+
+
+        <!-- ========================= -->
+        <!-- HOPE / HAVEN ASSISTANT -->
+        <!-- ========================= -->
+
+        <!-- Main Hope Chatbot Screen -->
+        <activity
+            android:name=".ChatbotActivity"
+            android:exported="false" />
+
+        <!-- Temporary Hope Connection Test -->
+        <activity
+            android:name=".HopeConnectionTestActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".NotificationDetailsActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- SUPPORT / REPORTS -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".SupportActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AddReportActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MyReportsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DraftReportsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ReportDetailsActivity"
+            android:exported="false" />
+
+
+
+        <!-- ========================= -->
+        <!-- EXPLORE -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".ExploreActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- LEGAL RIGHTS -->
+        <!-- ========================= -->
+
+        <!-- Legal Rights Article List -->
+        <activity
+            android:name=".LegalRightsActivity"
+            android:exported="false" />
+
+        <!-- Legal Rights Article Details -->
+        <activity
+            android:name=".LegalArticleDetailsActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- EDUCATIONAL ARTICLES -->
+        <!-- ========================= -->
+
+        <!-- Educational Articles List -->
+        <activity
+            android:name=".EducationalArticlesActivity"
+            android:exported="false" />
+
+        <!-- Educational Article Details -->
+        <activity
+            android:name=".EducationalArticleDetailsActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- EMERGENCY HOTLINES -->
+        <!-- ========================= -->
+
+        <!-- Emergency Hotlines List -->
+        <activity
+            android:name=".EmergencyHotlinesActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- TINIG NG KABABAIHAN -->
+        <!-- ========================= -->
+
+        <!-- See All - Tinig ng Kababaihan Episodes -->
+        <activity
+            android:name=".TinigEpisodesActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- HOME ACTIVITY -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+
+
+
+
+        <!-- ========================= -->
+        <!-- EMERGENCY LOCATION SERVICE -->
+        <!-- ========================= -->
+
+        <service
+            android:name=".EmergencyLocationService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+
+        <!-- ========================= -->
+        <!-- PROFILE ACTIVITY -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".HelpSupportActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".UsingHavenAppActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".AboutAppActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PrivacyPolicyActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DataSecurityActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PrivacySecurityActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- CHANGE NEW PASSWORD -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".ChangeNewPasswordActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- SET PASSWORD -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".SetPasswordActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- PASSWORD UPDATED -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".PasswordUpdatedActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- CHECK YOUR EMAIL -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".CheckYourEmailActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- FORGOT PASSWORD -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- LOGIN ACTIVITY -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+
+        <!-- ========================= -->
+        <!-- SPLASH ACTIVITY -->
+        <!-- ========================= -->
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>

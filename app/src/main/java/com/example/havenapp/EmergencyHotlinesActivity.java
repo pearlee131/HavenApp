@@ -33,6 +33,8 @@ public class EmergencyHotlinesActivity extends AppCompatActivity {
     private ProgressBar progressEmergencyHotlines;
     private LinearLayout layoutEmergencyEmpty;
 
+    private View cardHopeAssistant;
+
     private final List<EmergencyHotline> hotlineList =
             new ArrayList<>();
 
@@ -56,6 +58,8 @@ public class EmergencyHotlinesActivity extends AppCompatActivity {
         setupRecyclerView();
 
         setupAPI();
+
+        setupHopeAssistant();
 
         loadEmergencyHotlines();
     }
@@ -81,6 +85,28 @@ public class EmergencyHotlinesActivity extends AppCompatActivity {
                 findViewById(
                         R.id.layoutEmergencyEmpty
                 );
+
+        cardHopeAssistant =
+                findViewById(
+                        R.id.cardHopeAssistant
+                );
+    }
+
+
+    // =====================================================
+    // HOPE ASSISTANT
+    // =====================================================
+
+    private void setupHopeAssistant() {
+
+        if (cardHopeAssistant == null) {
+            return;
+        }
+
+        ChatbotFloatingHelper.setup(
+                this,
+                cardHopeAssistant
+        );
     }
 
 

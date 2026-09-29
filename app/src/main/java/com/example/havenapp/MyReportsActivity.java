@@ -65,12 +65,19 @@ public class MyReportsActivity extends AppCompatActivity {
     private TextView textNoReports;
     private TextView textNoReportsSubtitle;
 
-    private final List<Map<String, Object>> allReports = new ArrayList<>();
+    private final List<Map<String, Object>> allReports =
+            new ArrayList<>();
 
     private String selectedStatusTab = "all";
     private String selectedMonth = "All Months";
     private boolean newestFirst = true;
     private String searchQuery = "";
+
+    // =====================================================
+    // HOPE ASSISTANT
+    // =====================================================
+
+    private View cardHopeAssistant;
 
 
     @Override
@@ -78,7 +85,12 @@ public class MyReportsActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.myreports_activity);
+        setContentView(
+                R.layout.myreports_activity
+        );
+
+
+
 
 
         // =====================================================
@@ -86,40 +98,64 @@ public class MyReportsActivity extends AppCompatActivity {
         // =====================================================
 
         reportsContainer =
-                findViewById(R.id.reportsContainer);
+                findViewById(
+                        R.id.reportsContainer
+                );
 
         emptyReportsContainer =
-                findViewById(R.id.emptyReportsContainer);
+                findViewById(
+                        R.id.emptyReportsContainer
+                );
 
         monthFilterDropdown =
-                findViewById(R.id.monthFilterDropdown);
+                findViewById(
+                        R.id.monthFilterDropdown
+                );
 
         tabAll =
-                findViewById(R.id.tabAll);
+                findViewById(
+                        R.id.tabAll
+                );
 
         tabActive =
-                findViewById(R.id.tabActive);
+                findViewById(
+                        R.id.tabActive
+                );
 
         tabResolved =
-                findViewById(R.id.tabResolved);
+                findViewById(
+                        R.id.tabResolved
+                );
 
         filterOverlay =
-                findViewById(R.id.filterOverlay);
+                findViewById(
+                        R.id.filterOverlay
+                );
 
         filterSheet =
-                findViewById(R.id.filterSheet);
+                findViewById(
+                        R.id.filterSheet
+                );
 
         activeFilterCard =
-                findViewById(R.id.activeFilterCard);
+                findViewById(
+                        R.id.activeFilterCard
+                );
 
         textActiveFilter =
-                findViewById(R.id.textActiveFilter);
+                findViewById(
+                        R.id.textActiveFilter
+                );
 
         textNoReports =
-                findViewById(R.id.textNoReports);
+                findViewById(
+                        R.id.textNoReports
+                );
 
         textNoReportsSubtitle =
-                findViewById(R.id.textNoReportsSubtitle);
+                findViewById(
+                        R.id.textNoReportsSubtitle
+                );
 
 
         // =====================================================
@@ -129,7 +165,9 @@ public class MyReportsActivity extends AppCompatActivity {
         incidentReportAPI =
                 SupabaseClient
                         .getClient()
-                        .create(IncidentReportAPI.class);
+                        .create(
+                                IncidentReportAPI.class
+                        );
 
 
         // =====================================================
@@ -148,6 +186,23 @@ public class MyReportsActivity extends AppCompatActivity {
         // =====================================================
 
         loadMyReports();
+
+        // =====================================================
+        // HOPE ASSISTANT
+        // =====================================================
+
+        cardHopeAssistant =
+                findViewById(
+                        R.id.cardHopeAssistant
+                );
+
+        if (cardHopeAssistant != null) {
+
+            ChatbotFloatingHelper.setup(
+                    this,
+                    cardHopeAssistant
+            );
+        }
     }
 
 
@@ -158,11 +213,10 @@ public class MyReportsActivity extends AppCompatActivity {
     private void setupBackButton() {
 
         findViewById(R.id.btnBack)
-                .setOnClickListener(v -> finish());
+                .setOnClickListener(
+                        v -> finish()
+                );
     }
-
-
-
 
 
     // =====================================================
@@ -172,7 +226,9 @@ public class MyReportsActivity extends AppCompatActivity {
     private void setupSearch() {
 
         TextView searchInput =
-                findViewById(R.id.searchReportsInput);
+                findViewById(
+                        R.id.searchReportsInput
+                );
 
         searchInput.addTextChangedListener(
                 new TextWatcher() {
@@ -199,7 +255,9 @@ public class MyReportsActivity extends AppCompatActivity {
                                         ? ""
                                         : s.toString()
                                           .trim()
-                                          .toLowerCase(Locale.US);
+                                          .toLowerCase(
+                                                  Locale.US
+                                          );
 
                         applyFilters();
                     }
@@ -223,7 +281,9 @@ public class MyReportsActivity extends AppCompatActivity {
         tabAll.setOnClickListener(v -> {
 
             selectedStatusTab = "all";
+
             updateTabStyles();
+
             applyFilters();
         });
 
@@ -231,7 +291,9 @@ public class MyReportsActivity extends AppCompatActivity {
         tabActive.setOnClickListener(v -> {
 
             selectedStatusTab = "active";
+
             updateTabStyles();
+
             applyFilters();
         });
 
@@ -239,7 +301,9 @@ public class MyReportsActivity extends AppCompatActivity {
         tabResolved.setOnClickListener(v -> {
 
             selectedStatusTab = "resolved";
+
             updateTabStyles();
+
             applyFilters();
         });
 
@@ -276,7 +340,9 @@ public class MyReportsActivity extends AppCompatActivity {
 
             button.setBackgroundTintList(
                     android.content.res.ColorStateList.valueOf(
-                            Color.parseColor("#6C2BD9")
+                            Color.parseColor(
+                                    "#6C2BD9"
+                            )
                     )
             );
 
@@ -292,17 +358,23 @@ public class MyReportsActivity extends AppCompatActivity {
 
             button.setBackgroundTintList(
                     android.content.res.ColorStateList.valueOf(
-                            Color.parseColor("#FAF8FF")
+                            Color.parseColor(
+                                    "#FAF8FF"
+                            )
                     )
             );
 
             button.setTextColor(
-                    Color.parseColor("#21115D")
+                    Color.parseColor(
+                            "#21115D"
+                    )
             );
 
             button.setStrokeColor(
                     android.content.res.ColorStateList.valueOf(
-                            Color.parseColor("#DDD2F4")
+                            Color.parseColor(
+                                    "#DDD2F4"
+                            )
                     )
             );
 
@@ -320,21 +392,30 @@ public class MyReportsActivity extends AppCompatActivity {
     private void setupFilter() {
 
         findViewById(R.id.btnFilter)
-                .setOnClickListener(v -> openFilter());
+                .setOnClickListener(
+                        v -> openFilter()
+                );
 
 
         findViewById(R.id.btnCloseFilter)
-                .setOnClickListener(v -> closeFilter());
+                .setOnClickListener(
+                        v -> closeFilter()
+                );
 
 
-        filterOverlay.setOnClickListener(v -> closeFilter());
+        filterOverlay.setOnClickListener(
+                v -> closeFilter()
+        );
 
 
         findViewById(R.id.btnResetFilter)
                 .setOnClickListener(v -> {
 
-                    selectedMonth = "All Months";
-                    newestFirst = true;
+                    selectedMonth =
+                            "All Months";
+
+                    newestFirst =
+                            true;
 
                     monthFilterDropdown.setText(
                             "All Months",
@@ -342,7 +423,9 @@ public class MyReportsActivity extends AppCompatActivity {
                     );
 
                     RadioButton radioNewest =
-                            findViewById(R.id.radioNewest);
+                            findViewById(
+                                    R.id.radioNewest
+                            );
 
                     radioNewest.setChecked(
                             true
@@ -365,14 +448,19 @@ public class MyReportsActivity extends AppCompatActivity {
                             month.isEmpty()
                                     ? "All Months"
                                     : month;
+
                     RadioButton radioNewest =
-                            findViewById(R.id.radioNewest);
+                            findViewById(
+                                    R.id.radioNewest
+                            );
 
                     newestFirst =
                             radioNewest.isChecked();
 
                     closeFilter();
+
                     updateActiveFilterSummary();
+
                     applyFilters();
                 });
 
@@ -380,8 +468,11 @@ public class MyReportsActivity extends AppCompatActivity {
         findViewById(R.id.btnClearFilter)
                 .setOnClickListener(v -> {
 
-                    selectedMonth = "All Months";
-                    newestFirst = true;
+                    selectedMonth =
+                            "All Months";
+
+                    newestFirst =
+                            true;
 
                     monthFilterDropdown.setText(
                             "All Months",
@@ -389,13 +480,16 @@ public class MyReportsActivity extends AppCompatActivity {
                     );
 
                     RadioButton radioNewest =
-                            findViewById(R.id.radioNewest);
+                            findViewById(
+                                    R.id.radioNewest
+                            );
 
                     radioNewest.setChecked(
                             true
                     );
 
                     updateActiveFilterSummary();
+
                     applyFilters();
                 });
     }
@@ -435,6 +529,7 @@ public class MyReportsActivity extends AppCompatActivity {
         boolean hasSortFilter =
                 !newestFirst;
 
+
         if (!hasMonthFilter
                 && !hasSortFilter) {
 
@@ -455,6 +550,7 @@ public class MyReportsActivity extends AppCompatActivity {
                 new StringBuilder(
                         "Filtered by: "
                 );
+
 
         if (hasMonthFilter) {
 
@@ -500,16 +596,20 @@ public class MyReportsActivity extends AppCompatActivity {
     private void setupEmptyStateButton() {
 
         findViewById(R.id.btnFileNewReport)
-                .setOnClickListener(v -> {
+                .setOnClickListener(
+                        v -> {
 
-                    Intent intent =
-                            new Intent(
-                                    MyReportsActivity.this,
-                                    AddReportActivity.class
+                            Intent intent =
+                                    new Intent(
+                                            MyReportsActivity.this,
+                                            AddReportActivity.class
+                                    );
+
+                            startActivity(
+                                    intent
                             );
-
-                    startActivity(intent);
-                });
+                        }
+                );
     }
 
 
@@ -617,7 +717,10 @@ public class MyReportsActivity extends AppCompatActivity {
 
                                 if (reports != null) {
 
-                                    for (Map<String, Object> report : reports) {
+                                    for (
+                                            Map<String, Object> report
+                                            : reports
+                                    ) {
 
                                         String reportStatus =
                                                 getSafeValue(
@@ -633,7 +736,11 @@ public class MyReportsActivity extends AppCompatActivity {
 
                                         // Draft reports belong only to Drafts.
                                         // Never include them in My Reports.
-                                        if (reportStatus.equals("draft")) {
+                                        if (
+                                                reportStatus.equals(
+                                                        "draft"
+                                                )
+                                        ) {
 
                                             continue;
                                         }
@@ -647,6 +754,7 @@ public class MyReportsActivity extends AppCompatActivity {
 
 
                                 setupMonthOptions();
+
                                 applyFilters();
 
 
@@ -695,7 +803,10 @@ public class MyReportsActivity extends AppCompatActivity {
                 new LinkedHashSet<>();
 
 
-        for (Map<String, Object> report : allReports) {
+        for (
+                Map<String, Object> report
+                : allReports
+        ) {
 
             String createdAt =
                     getSafeValue(
@@ -704,10 +815,12 @@ public class MyReportsActivity extends AppCompatActivity {
                             ""
                     );
 
+
             String monthLabel =
                     getMonthLabel(
                             createdAt
                     );
+
 
             if (!monthLabel.isEmpty()) {
 
@@ -721,9 +834,11 @@ public class MyReportsActivity extends AppCompatActivity {
         List<String> options =
                 new ArrayList<>();
 
+
         options.add(
                 "All Months"
         );
+
 
         options.addAll(
                 months
@@ -737,9 +852,11 @@ public class MyReportsActivity extends AppCompatActivity {
                         options
                 );
 
+
         monthFilterDropdown.setAdapter(
                 adapter
         );
+
 
         monthFilterDropdown.setText(
                 selectedMonth,
@@ -758,7 +875,10 @@ public class MyReportsActivity extends AppCompatActivity {
                 new ArrayList<>();
 
 
-        for (Map<String, Object> report : allReports) {
+        for (
+                Map<String, Object> report
+                : allReports
+        ) {
 
             if (!matchesStatusTab(
                     report
@@ -807,6 +927,7 @@ public class MyReportsActivity extends AppCompatActivity {
                                         ""
                                 );
 
+
                         String secondCreated =
                                 getSafeValue(
                                         second,
@@ -814,10 +935,12 @@ public class MyReportsActivity extends AppCompatActivity {
                                         ""
                                 );
 
+
                         int comparison =
                                 firstCreated.compareTo(
                                         secondCreated
                                 );
+
 
                         return newestFirst
                                 ? -comparison
@@ -845,7 +968,10 @@ public class MyReportsActivity extends AppCompatActivity {
         );
 
 
-        for (Map<String, Object> report : filtered) {
+        for (
+                Map<String, Object> report
+                : filtered
+        ) {
 
             addReportCard(
                     report
@@ -871,17 +997,21 @@ public class MyReportsActivity extends AppCompatActivity {
 
 
         // Drafts are never part of My Reports.
-        if (status.equals(
-                "draft"
-        )) {
+        if (
+                status.equals(
+                        "draft"
+                )
+        ) {
 
             return false;
         }
 
 
-        if (selectedStatusTab.equals(
-                "all"
-        )) {
+        if (
+                selectedStatusTab.equals(
+                        "all"
+                )
+        ) {
 
             return true;
         }
@@ -899,9 +1029,11 @@ public class MyReportsActivity extends AppCompatActivity {
                 );
 
 
-        if (selectedStatusTab.equals(
-                "resolved"
-        )) {
+        if (
+                selectedStatusTab.equals(
+                        "resolved"
+                )
+        ) {
 
             return resolved;
         }
@@ -916,9 +1048,11 @@ public class MyReportsActivity extends AppCompatActivity {
             Map<String, Object> report
     ) {
 
-        if (selectedMonth.equals(
-                "All Months"
-        )) {
+        if (
+                selectedMonth.equals(
+                        "All Months"
+                )
+        ) {
 
             return true;
         }
@@ -1017,17 +1151,22 @@ public class MyReportsActivity extends AppCompatActivity {
 
     private void clearReportCards() {
 
-        for (int index =
-             reportsContainer.getChildCount() - 1;
-             index >= 0;
-             index--) {
+        for (
+                int index =
+                reportsContainer.getChildCount() - 1;
+                index >= 0;
+                index--
+        ) {
 
             View child =
                     reportsContainer.getChildAt(
                             index
                     );
 
-            if (child != emptyReportsContainer) {
+
+            if (
+                    child != emptyReportsContainer
+            ) {
 
                 reportsContainer.removeViewAt(
                         index
@@ -1147,13 +1286,16 @@ public class MyReportsActivity extends AppCompatActivity {
                         this
                 );
 
+
         row.setOrientation(
                 LinearLayout.HORIZONTAL
         );
 
+
         row.setGravity(
                 Gravity.CENTER_VERTICAL
         );
+
 
         row.setPadding(
                 dpToPx(14),
@@ -1172,11 +1314,13 @@ public class MyReportsActivity extends AppCompatActivity {
                         this
                 );
 
+
         LinearLayout.LayoutParams iconParams =
                 new LinearLayout.LayoutParams(
                         dpToPx(46),
                         dpToPx(46)
                 );
+
 
         iconParams.setMargins(
                 0,
@@ -1185,9 +1329,11 @@ public class MyReportsActivity extends AppCompatActivity {
                 0
         );
 
+
         iconView.setLayoutParams(
                 iconParams
         );
+
 
         iconView.setPadding(
                 dpToPx(7),
@@ -1196,13 +1342,16 @@ public class MyReportsActivity extends AppCompatActivity {
                 dpToPx(7)
         );
 
+
         iconView.setScaleType(
                 android.widget.ImageView.ScaleType.FIT_CENTER
         );
 
+
         iconView.setImageResource(
                 R.drawable.ic_report
         );
+
 
         iconView.setBackground(
                 createRoundedBackground(
@@ -1221,6 +1370,7 @@ public class MyReportsActivity extends AppCompatActivity {
                         this
                 );
 
+
         LinearLayout.LayoutParams detailsParams =
                 new LinearLayout.LayoutParams(
                         0,
@@ -1228,9 +1378,11 @@ public class MyReportsActivity extends AppCompatActivity {
                         1f
                 );
 
+
         details.setLayoutParams(
                 detailsParams
         );
+
 
         details.setOrientation(
                 LinearLayout.VERTICAL
@@ -1242,17 +1394,23 @@ public class MyReportsActivity extends AppCompatActivity {
                         this
                 );
 
+
         caseNumberView.setText(
                 caseNumber
         );
+
 
         caseNumberView.setTextSize(
                 14
         );
 
+
         caseNumberView.setTextColor(
-                Color.parseColor("#21115D")
+                Color.parseColor(
+                        "#21115D"
+                )
         );
+
 
         caseNumberView.setTypeface(
                 null,
@@ -1273,30 +1431,39 @@ public class MyReportsActivity extends AppCompatActivity {
                         this
                 );
 
+
         LinearLayout.LayoutParams typeParams =
                 new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
 
+
         typeParams.topMargin =
                 dpToPx(6);
+
 
         typeView.setLayoutParams(
                 typeParams
         );
 
+
         typeView.setText(
                 incidentType
         );
+
 
         typeView.setTextSize(
                 12
         );
 
+
         typeView.setTextColor(
-                Color.parseColor("#21115D")
+                Color.parseColor(
+                        "#21115D"
+                )
         );
+
 
         typeView.setTypeface(
                 null,
@@ -1315,13 +1482,16 @@ public class MyReportsActivity extends AppCompatActivity {
                 caseNumberView
         );
 
+
         details.addView(
                 submittedDateView
         );
 
+
         details.addView(
                 typeView
         );
+
 
         details.addView(
                 incidentDateView
@@ -1337,9 +1507,11 @@ public class MyReportsActivity extends AppCompatActivity {
                         this
                 );
 
+
         rightSide.setOrientation(
                 LinearLayout.VERTICAL
         );
+
 
         rightSide.setGravity(
                 Gravity.END
@@ -1351,20 +1523,24 @@ public class MyReportsActivity extends AppCompatActivity {
                         this
                 );
 
+
         statusView.setText(
                 getDisplayStatus(
                         reportStatus
                 )
         );
 
+
         statusView.setTextSize(
                 10
         );
+
 
         statusView.setTypeface(
                 null,
                 Typeface.BOLD
         );
+
 
         statusView.setPadding(
                 dpToPx(11),
@@ -1385,30 +1561,39 @@ public class MyReportsActivity extends AppCompatActivity {
                         this
                 );
 
+
         LinearLayout.LayoutParams arrowParams =
                 new LinearLayout.LayoutParams(
                         dpToPx(30),
                         dpToPx(34)
                 );
 
+
         arrowParams.topMargin =
                 dpToPx(8);
+
 
         arrowView.setLayoutParams(
                 arrowParams
         );
 
+
         arrowView.setGravity(
                 Gravity.CENTER
         );
+
 
         arrowView.setText(
                 "›"
         );
 
+
         arrowView.setTextColor(
-                Color.parseColor("#6C2BD9")
+                Color.parseColor(
+                        "#6C2BD9"
+                )
         );
+
 
         arrowView.setTextSize(
                 28
@@ -1427,9 +1612,11 @@ public class MyReportsActivity extends AppCompatActivity {
                 iconView
         );
 
+
         row.addView(
                 details
         );
+
 
         row.addView(
                 rightSide
@@ -1447,23 +1634,27 @@ public class MyReportsActivity extends AppCompatActivity {
 
         if (!reportId.isEmpty()) {
 
-            cardView.setOnClickListener(v -> {
+            cardView.setOnClickListener(
+                    v -> {
 
-                Intent intent =
-                        new Intent(
-                                MyReportsActivity.this,
-                                ReportDetailsActivity.class
+                        Intent intent =
+                                new Intent(
+                                        MyReportsActivity.this,
+                                        ReportDetailsActivity.class
+                                );
+
+
+                        intent.putExtra(
+                                "report_id",
+                                reportId
                         );
 
-                intent.putExtra(
-                        "report_id",
-                        reportId
-                );
 
-                startActivity(
-                        intent
-                );
-            });
+                        startActivity(
+                                intent
+                        );
+                    }
+            );
         }
 
 
@@ -1507,19 +1698,24 @@ public class MyReportsActivity extends AppCompatActivity {
                           );
 
 
-        if (normalized.equals(
-                "resolved"
-        )
-                || normalized.equals(
-                "closed"
-        )
-                || normalized.equals(
-                "completed"
-        )) {
+        if (
+                normalized.equals(
+                        "resolved"
+                )
+                        || normalized.equals(
+                        "closed"
+                )
+                        || normalized.equals(
+                        "completed"
+                )
+        ) {
 
             statusView.setTextColor(
-                    Color.parseColor("#188641")
+                    Color.parseColor(
+                            "#188641"
+                    )
             );
+
 
             statusView.setBackground(
                     createRoundedBackground(
@@ -1531,8 +1727,11 @@ public class MyReportsActivity extends AppCompatActivity {
         } else {
 
             statusView.setTextColor(
-                    Color.parseColor("#247BCB")
+                    Color.parseColor(
+                            "#247BCB"
+                    )
             );
+
 
             statusView.setBackground(
                     createRoundedBackground(
@@ -1557,15 +1756,17 @@ public class MyReportsActivity extends AppCompatActivity {
                           );
 
 
-        if (normalized.equals(
-                "resolved"
-        )
-                || normalized.equals(
-                "closed"
-        )
-                || normalized.equals(
-                "completed"
-        )) {
+        if (
+                normalized.equals(
+                        "resolved"
+                )
+                        || normalized.equals(
+                        "closed"
+                )
+                        || normalized.equals(
+                        "completed"
+                )
+        ) {
 
             return "Resolved";
         }
@@ -1595,24 +1796,32 @@ public class MyReportsActivity extends AppCompatActivity {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
 
+
         params.topMargin =
                 dpToPx(2);
+
 
         textView.setLayoutParams(
                 params
         );
 
+
         textView.setText(
                 text
         );
+
 
         textView.setTextSize(
                 10
         );
 
+
         textView.setTextColor(
-                Color.parseColor("#766D8A")
+                Color.parseColor(
+                        "#766D8A"
+                )
         );
+
 
         return textView;
     }
@@ -1628,6 +1837,7 @@ public class MyReportsActivity extends AppCompatActivity {
 
         clearReportCards();
 
+
         emptyReportsContainer.setVisibility(
                 View.VISIBLE
         );
@@ -1639,6 +1849,7 @@ public class MyReportsActivity extends AppCompatActivity {
                     "No Reports Found"
             );
 
+
             textNoReportsSubtitle.setText(
                     "No reports match your current search or filter."
             );
@@ -1648,6 +1859,7 @@ public class MyReportsActivity extends AppCompatActivity {
             textNoReports.setText(
                     "No Reports Yet"
             );
+
 
             textNoReportsSubtitle.setText(
                     "You haven't submitted any reports yet. "
@@ -1665,8 +1877,10 @@ public class MyReportsActivity extends AppCompatActivity {
             String createdAt
     ) {
 
-        if (createdAt == null
-                || createdAt.trim().isEmpty()) {
+        if (
+                createdAt == null
+                        || createdAt.trim().isEmpty()
+        ) {
 
             return "";
         }
@@ -1687,6 +1901,7 @@ public class MyReportsActivity extends AppCompatActivity {
                         Locale.US
                 );
 
+
         SimpleDateFormat output =
                 new SimpleDateFormat(
                         "MMMM yyyy",
@@ -1700,6 +1915,7 @@ public class MyReportsActivity extends AppCompatActivity {
                     input.parse(
                             datePart
                     );
+
 
             return date == null
                     ? ""
@@ -1718,11 +1934,13 @@ public class MyReportsActivity extends AppCompatActivity {
             String createdAt
     ) {
 
-        if (createdAt == null
-                || createdAt.trim().isEmpty()
-                || createdAt.equals(
-                "Not available"
-        )) {
+        if (
+                createdAt == null
+                        || createdAt.trim().isEmpty()
+                        || createdAt.equals(
+                        "Not available"
+                )
+        ) {
 
             return "Date filed not available";
         }
@@ -1743,7 +1961,10 @@ public class MyReportsActivity extends AppCompatActivity {
         };
 
 
-        for (String pattern : possibleFormats) {
+        for (
+                String pattern
+                : possibleFormats
+        ) {
 
             try {
 
@@ -1753,17 +1974,34 @@ public class MyReportsActivity extends AppCompatActivity {
                                 Locale.US
                         );
 
-                input.setLenient(false);
 
-                if (pattern.endsWith("'Z'")
-                        || pattern.equals("yyyy-MM-dd HH:mm:ss")) {
+                input.setLenient(
+                        false
+                );
+
+
+                if (
+                        pattern.endsWith(
+                                "'Z'"
+                        )
+                                || pattern.equals(
+                                "yyyy-MM-dd HH:mm:ss"
+                        )
+                ) {
 
                     input.setTimeZone(
-                            TimeZone.getTimeZone("UTC")
+                            TimeZone.getTimeZone(
+                                    "UTC"
+                            )
                     );
                 }
 
-                Date date = input.parse(cleaned);
+
+                Date date =
+                        input.parse(
+                                cleaned
+                        );
+
 
                 if (date != null) {
 
@@ -1773,20 +2011,32 @@ public class MyReportsActivity extends AppCompatActivity {
                                     Locale.US
                             );
 
+
                     output.setTimeZone(
-                            TimeZone.getTimeZone("Asia/Manila")
+                            TimeZone.getTimeZone(
+                                    "Asia/Manila"
+                            )
                     );
 
-                    return output.format(date);
+
+                    return output.format(
+                            date
+                    );
                 }
 
             } catch (ParseException ignored) {
             }
         }
 
+
         if (createdAt.length() >= 10) {
-            return createdAt.substring(0, 10);
+
+            return createdAt.substring(
+                    0,
+                    10
+            );
         }
+
 
         return createdAt;
     }
@@ -1796,39 +2046,83 @@ public class MyReportsActivity extends AppCompatActivity {
             String timestamp
     ) {
 
-        if (timestamp == null
-                || timestamp.trim().isEmpty()) {
+        if (
+                timestamp == null
+                        || timestamp.trim().isEmpty()
+        ) {
 
             return "";
         }
 
-        String cleaned = timestamp.trim();
-        int dotIndex = cleaned.indexOf('.');
+
+        String cleaned =
+                timestamp.trim();
+
+
+        int dotIndex =
+                cleaned.indexOf(
+                        '.'
+                );
+
 
         if (dotIndex < 0) {
+
             return cleaned;
         }
 
-        int fractionEnd = dotIndex + 1;
 
-        while (fractionEnd < cleaned.length()
-                && Character.isDigit(cleaned.charAt(fractionEnd))) {
+        int fractionEnd =
+                dotIndex + 1;
+
+
+        while (
+                fractionEnd < cleaned.length()
+                        && Character.isDigit(
+                        cleaned.charAt(
+                                fractionEnd
+                        )
+                )
+        ) {
+
             fractionEnd++;
         }
 
-        String fraction = cleaned.substring(dotIndex + 1, fractionEnd);
+
+        String fraction =
+                cleaned.substring(
+                        dotIndex + 1,
+                        fractionEnd
+                );
+
 
         if (fraction.length() > 3) {
-            fraction = fraction.substring(0, 3);
+
+            fraction =
+                    fraction.substring(
+                            0,
+                            3
+                    );
+
         } else {
-            while (fraction.length() < 3) {
-                fraction += "0";
+
+            while (
+                    fraction.length() < 3
+            ) {
+
+                fraction +=
+                        "0";
             }
         }
 
-        return cleaned.substring(0, dotIndex + 1)
+
+        return cleaned.substring(
+                0,
+                dotIndex + 1
+        )
                 + fraction
-                + cleaned.substring(fractionEnd);
+                + cleaned.substring(
+                fractionEnd
+        );
     }
 
 
@@ -1861,10 +2155,12 @@ public class MyReportsActivity extends AppCompatActivity {
                         .trim();
 
 
-        if (result.isEmpty()
-                || result.equalsIgnoreCase(
-                "null"
-        )) {
+        if (
+                result.isEmpty()
+                        || result.equalsIgnoreCase(
+                        "null"
+                )
+        ) {
 
             return defaultValue;
         }
@@ -1882,8 +2178,10 @@ public class MyReportsActivity extends AppCompatActivity {
             String status
     ) {
 
-        if (status == null
-                || status.trim().isEmpty()) {
+        if (
+                status == null
+                        || status.trim().isEmpty()
+        ) {
 
             return "Submitted";
         }
@@ -1911,7 +2209,10 @@ public class MyReportsActivity extends AppCompatActivity {
                 new StringBuilder();
 
 
-        for (String word : words) {
+        for (
+                String word
+                : words
+        ) {
 
             if (word.isEmpty()) {
 
@@ -1962,17 +2263,20 @@ public class MyReportsActivity extends AppCompatActivity {
         GradientDrawable drawable =
                 new GradientDrawable();
 
+
         drawable.setColor(
                 Color.parseColor(
                         colorHex
                 )
         );
 
+
         drawable.setCornerRadius(
                 dpToPx(
                         radiusDp
                 )
         );
+
 
         return drawable;
     }
@@ -1991,11 +2295,9 @@ public class MyReportsActivity extends AppCompatActivity {
                         .getDisplayMetrics()
                         .density;
 
+
         return Math.round(
                 dp * density
         );
     }
 }
-
-
-

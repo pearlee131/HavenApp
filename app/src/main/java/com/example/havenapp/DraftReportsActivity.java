@@ -42,25 +42,66 @@ public class DraftReportsActivity extends AppCompatActivity {
     private LinearLayout draftsContainer;
     private LinearLayout emptyDraftsContainer;
 
+    // =====================================================
+    // HOPE ASSISTANT
+    // =====================================================
+
+    private View cardHopeAssistant;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.draftreports_activity);
+        setContentView(
+                R.layout.draftreports_activity
+        );
 
+
+        // =====================================================
+        // HOPE ASSISTANT
+        // =====================================================
+
+        cardHopeAssistant =
+                findViewById(
+                        R.id.cardHopeAssistant
+                );
+
+        if (cardHopeAssistant != null) {
+
+            ChatbotFloatingHelper.setup(
+                    this,
+                    cardHopeAssistant
+            );
+        }
+
+
+        // =====================================================
+        // INITIALIZE VIEWS
+        // =====================================================
 
         draftsContainer =
-                findViewById(R.id.draftsContainer);
+                findViewById(
+                        R.id.draftsContainer
+                );
 
         emptyDraftsContainer =
-                findViewById(R.id.emptyDraftsContainer);
+                findViewById(
+                        R.id.emptyDraftsContainer
+                );
+
+
+        // =====================================================
+        // INITIALIZE API
+        // =====================================================
 
         incidentReportAPI =
                 SupabaseClient
                         .getClient()
-                        .create(IncidentReportAPI.class);
+                        .create(
+                                IncidentReportAPI.class
+                        );
 
 
         setupBackButton();
@@ -77,28 +118,44 @@ public class DraftReportsActivity extends AppCompatActivity {
     }
 
 
+    // =====================================================
+    // BACK BUTTON
+    // =====================================================
+
     private void setupBackButton() {
 
         findViewById(R.id.btnBack)
-                .setOnClickListener(v -> finish());
+                .setOnClickListener(
+                        v -> finish()
+                );
     }
 
+
+    // =====================================================
+    // CREATE REPORT BUTTON
+    // =====================================================
 
     private void setupCreateReportButton() {
 
         findViewById(R.id.btnCreateReport)
-                .setOnClickListener(v -> {
+                .setOnClickListener(
+                        v -> {
 
-                    Intent intent =
-                            new Intent(
-                                    DraftReportsActivity.this,
-                                    AddReportActivity.class
-                            );
+                            Intent intent =
+                                    new Intent(
+                                            DraftReportsActivity.this,
+                                            AddReportActivity.class
+                                    );
 
-                    startActivity(intent);
-                });
+                            startActivity(intent);
+                        }
+                );
     }
 
+
+    // =====================================================
+    // LOAD DRAFT REPORTS
+    // =====================================================
 
     private void loadDraftReports() {
 
@@ -185,7 +242,10 @@ public class DraftReportsActivity extends AppCompatActivity {
 
                                 if (reports != null) {
 
-                                    for (Map<String, Object> report : reports) {
+                                    for (
+                                            Map<String, Object> report
+                                            : reports
+                                    ) {
 
                                         String reportStatus =
                                                 getSafeValue(
@@ -198,7 +258,11 @@ public class DraftReportsActivity extends AppCompatActivity {
                                                                 Locale.US
                                                         );
 
-                                        if (reportStatus.equals("draft")) {
+                                        if (
+                                                reportStatus.equals(
+                                                        "draft"
+                                                )
+                                        ) {
 
                                             draftCount++;
                                         }
@@ -208,7 +272,10 @@ public class DraftReportsActivity extends AppCompatActivity {
                                     int currentDraftNumber =
                                             draftCount;
 
-                                    for (Map<String, Object> report : reports) {
+                                    for (
+                                            Map<String, Object> report
+                                            : reports
+                                    ) {
 
                                         String reportStatus =
                                                 getSafeValue(
@@ -222,7 +289,11 @@ public class DraftReportsActivity extends AppCompatActivity {
                                                         );
 
 
-                                        if (!reportStatus.equals("draft")) {
+                                        if (
+                                                !reportStatus.equals(
+                                                        "draft"
+                                                )
+                                        ) {
 
                                             continue;
                                         }
@@ -286,6 +357,10 @@ public class DraftReportsActivity extends AppCompatActivity {
                 );
     }
 
+
+    // =====================================================
+    // ADD DRAFT CARD
+    // =====================================================
 
     private void addDraftCard(
             Map<String, Object> report,
@@ -493,6 +568,7 @@ public class DraftReportsActivity extends AppCompatActivity {
                 savedDateText
         );
 
+
         // =====================================================
         // RIGHT SIDE: CHEVRON ONLY
         // =====================================================
@@ -571,6 +647,10 @@ public class DraftReportsActivity extends AppCompatActivity {
     }
 
 
+    // =====================================================
+    // EMPTY STATE
+    // =====================================================
+
     private void showEmptyState() {
 
         draftsContainer.removeAllViews();
@@ -584,6 +664,10 @@ public class DraftReportsActivity extends AppCompatActivity {
         );
     }
 
+
+    // =====================================================
+    // SAFE VALUE
+    // =====================================================
 
     private String getSafeValue(
             Map<String, Object> data,
@@ -615,10 +699,12 @@ public class DraftReportsActivity extends AppCompatActivity {
                 ).trim();
 
 
-        if (result.isEmpty()
-                || result.equalsIgnoreCase(
-                "null"
-        )) {
+        if (
+                result.isEmpty()
+                        || result.equalsIgnoreCase(
+                        "null"
+                )
+        ) {
 
             return defaultValue;
         }
@@ -628,12 +714,18 @@ public class DraftReportsActivity extends AppCompatActivity {
     }
 
 
+    // =====================================================
+    // FORMAT DATE TIME
+    // =====================================================
+
     private String formatDateTime(
             String databaseTimestamp
     ) {
 
-        if (databaseTimestamp == null
-                || databaseTimestamp.trim().isEmpty()) {
+        if (
+                databaseTimestamp == null
+                        || databaseTimestamp.trim().isEmpty()
+        ) {
 
             return "date not available";
         }
@@ -668,12 +760,14 @@ public class DraftReportsActivity extends AppCompatActivity {
                 );
 
 
-                if (pattern.endsWith(
-                        "'Z'"
-                )
-                        || pattern.equals(
-                        "yyyy-MM-dd HH:mm:ss"
-                )) {
+                if (
+                        pattern.endsWith(
+                                "'Z'"
+                        )
+                                || pattern.equals(
+                                "yyyy-MM-dd HH:mm:ss"
+                        )
+                ) {
 
                     input.setTimeZone(
                             TimeZone.getTimeZone(
@@ -717,6 +811,10 @@ public class DraftReportsActivity extends AppCompatActivity {
         return databaseTimestamp;
     }
 
+
+    // =====================================================
+    // CREATE TEXT VIEW
+    // =====================================================
 
     private TextView createTextView(
             String text,
@@ -766,6 +864,10 @@ public class DraftReportsActivity extends AppCompatActivity {
     }
 
 
+    // =====================================================
+    // ROUNDED BACKGROUND
+    // =====================================================
+
     private GradientDrawable createRoundedBackground(
             String color,
             int radiusDp
@@ -791,12 +893,18 @@ public class DraftReportsActivity extends AppCompatActivity {
     }
 
 
+    // =====================================================
+    // NORMALIZE TIMESTAMP
+    // =====================================================
+
     private String normalizeTimestamp(
             String timestamp
     ) {
 
-        if (timestamp == null
-                || timestamp.trim().isEmpty()) {
+        if (
+                timestamp == null
+                        || timestamp.trim().isEmpty()
+        ) {
 
             return "";
         }
@@ -821,12 +929,14 @@ public class DraftReportsActivity extends AppCompatActivity {
                 dotIndex + 1;
 
 
-        while (fractionEnd < cleaned.length()
-                && Character.isDigit(
-                cleaned.charAt(
-                        fractionEnd
+        while (
+                fractionEnd < cleaned.length()
+                        && Character.isDigit(
+                        cleaned.charAt(
+                                fractionEnd
+                        )
                 )
-        )) {
+        ) {
 
             fractionEnd++;
         }
@@ -868,6 +978,10 @@ public class DraftReportsActivity extends AppCompatActivity {
     }
 
 
+    // =====================================================
+    // DP TO PX
+    // =====================================================
+
     private int dpToPx(
             int dp
     ) {
@@ -882,5 +996,3 @@ public class DraftReportsActivity extends AppCompatActivity {
         );
     }
 }
-
-

@@ -39,9 +39,9 @@ public class TinigEpisodesActivity extends AppCompatActivity {
     /*
      * IMPORTANT:
      *
-     * btnBack is now a MaterialCardView because the new
-     * activity_tinig_episodes.xml uses a MaterialCardView
-     * for the My Reports-style exit/back button.
+     * btnBack is a MaterialCardView because the XML uses
+     * a MaterialCardView for the My Reports-style
+     * exit/back button.
      */
     private MaterialCardView btnBack;
 
@@ -52,6 +52,11 @@ public class TinigEpisodesActivity extends AppCompatActivity {
 
     private TextView txtEpisodeCount;
     private TextView txtEmptyEpisodes;
+
+    /*
+     * FLOATING HOPE ASSISTANT
+     */
+    private View cardHopeAssistant;
 
 
     // =====================================================
@@ -70,6 +75,7 @@ public class TinigEpisodesActivity extends AppCompatActivity {
     // =====================================================
 
     private TinigAllEpisodeAdapter episodeAdapter;
+
     private YearFilterAdapter yearFilterAdapter;
 
 
@@ -85,6 +91,7 @@ public class TinigEpisodesActivity extends AppCompatActivity {
     // =====================================================
 
     private String selectedYear = "All";
+
     private String currentSearch = "";
 
 
@@ -93,25 +100,72 @@ public class TinigEpisodesActivity extends AppCompatActivity {
     // =====================================================
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(
+            Bundle savedInstanceState
+    ) {
 
-        super.onCreate(savedInstanceState);
+        super.onCreate(
+                savedInstanceState
+        );
 
         setContentView(
                 R.layout.activity_tinig_episodes
         );
 
+
+        // =================================================
+        // INITIALIZE VIEWS
+        // =================================================
+
         initializeViews();
+
+
+        // =================================================
+        // API
+        // =================================================
 
         setupApi();
 
+
+        // =================================================
+        // BACK BUTTON
+        // =================================================
+
         setupBackButton();
+
+
+        // =================================================
+        // EPISODE RECYCLER
+        // =================================================
 
         setupEpisodeRecycler();
 
+
+        // =================================================
+        // YEAR FILTER RECYCLER
+        // =================================================
+
         setupYearRecycler();
 
+
+        // =================================================
+        // SEARCH
+        // =================================================
+
         setupSearch();
+
+
+        // =================================================
+        // FLOATING HOPE ASSISTANT
+        // Same implementation used by ExploreActivity
+        // =================================================
+
+        setupHopeAssistant();
+
+
+        // =================================================
+        // LOAD EPISODES
+        // =================================================
 
         loadAllEpisodes();
     }
@@ -152,6 +206,39 @@ public class TinigEpisodesActivity extends AppCompatActivity {
                 findViewById(
                         R.id.txtEmptyEpisodes
                 );
+
+
+        // =================================================
+        // HOPE ASSISTANT
+        // =================================================
+
+        cardHopeAssistant =
+                findViewById(
+                        R.id.cardHopeAssistant
+                );
+    }
+
+
+    // =====================================================
+    // HOPE ASSISTANT
+    // =====================================================
+
+    private void setupHopeAssistant() {
+
+        View floatingChatbot =
+                findViewById(
+                        R.id.cardHopeAssistant
+                );
+
+        if (floatingChatbot == null) {
+
+            return;
+        }
+
+        ChatbotFloatingHelper.setup(
+                this,
+                floatingChatbot
+        );
     }
 
 
@@ -283,7 +370,9 @@ public class TinigEpisodesActivity extends AppCompatActivity {
                                         ? ""
                                         : s.toString()
                                           .trim()
-                                          .toLowerCase(Locale.ROOT);
+                                          .toLowerCase(
+                                                  Locale.ROOT
+                                          );
 
                         applyFilters();
                     }
@@ -367,7 +456,10 @@ public class TinigEpisodesActivity extends AppCompatActivity {
 
                                 if (result != null) {
 
-                                    for (TinigEpisode episode : result) {
+                                    for (
+                                            TinigEpisode episode
+                                            : result
+                                    ) {
 
                                         if (episode != null) {
 
@@ -446,6 +538,7 @@ public class TinigEpisodesActivity extends AppCompatActivity {
         years.addAll(
                 uniqueYears
         );
+
 
         /*
          * If the database is temporarily empty,
@@ -665,7 +758,9 @@ public class TinigEpisodesActivity extends AppCompatActivity {
 
         return value
                 .trim()
-                .toLowerCase(Locale.ROOT);
+                .toLowerCase(
+                        Locale.ROOT
+                );
     }
 
 
@@ -674,7 +769,9 @@ public class TinigEpisodesActivity extends AppCompatActivity {
     // =====================================================
 
     private class YearFilterAdapter
-            extends RecyclerView.Adapter<YearFilterAdapter.YearViewHolder> {
+            extends RecyclerView.Adapter<
+            YearFilterAdapter.YearViewHolder
+            > {
 
         private final List<String> years;
 
@@ -687,6 +784,7 @@ public class TinigEpisodesActivity extends AppCompatActivity {
         ) {
 
             this.years = years;
+
             this.listener = listener;
         }
 
@@ -745,6 +843,7 @@ public class TinigEpisodesActivity extends AppCompatActivity {
                             selectedYear
                     );
 
+
             if (selected) {
 
                 holder.txtYear.setBackgroundResource(
@@ -769,6 +868,7 @@ public class TinigEpisodesActivity extends AppCompatActivity {
                         )
                 );
             }
+
 
             holder.txtYear.setOnClickListener(
                     v -> {

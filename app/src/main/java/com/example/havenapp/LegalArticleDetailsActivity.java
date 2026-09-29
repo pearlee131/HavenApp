@@ -6,13 +6,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 
-import com.bumptech.glide.Glide;
 import com.example.havenapp.api.LegalArticleAPI;
 import com.example.havenapp.api.SupabaseClient;
 import com.example.havenapp.model.LegalArticle;
@@ -49,8 +47,6 @@ public class LegalArticleDetailsActivity
     private NestedScrollView articleDetailsScroll;
 
     private View layoutArticleError;
-
-    private ImageView imgArticleHero;
 
     private TextView txtArticleCategory;
 
@@ -180,12 +176,6 @@ public class LegalArticleDetailsActivity
         layoutArticleError =
                 findViewById(
                         R.id.layoutArticleError
-                );
-
-
-        imgArticleHero =
-                findViewById(
-                        R.id.imgArticleHero
                 );
 
 
@@ -644,44 +634,6 @@ public class LegalArticleDetailsActivity
 
             txtOfficialSourceName.setText(
                     sourceName
-            );
-        }
-
-
-        // -------------------------------------------------
-        // THUMBNAIL / HERO
-        // -------------------------------------------------
-
-        String thumbnailUrl =
-                article.getThumbnailUrl();
-
-
-        if (
-                thumbnailUrl != null
-                        &&
-                        !thumbnailUrl.trim().isEmpty()
-        ) {
-
-            Glide.with(
-                            this
-                    )
-                    .load(
-                            thumbnailUrl
-                    )
-                    .placeholder(
-                            R.drawable.ic_legalrights
-                    )
-                    .error(
-                            R.drawable.ic_legalrights
-                    )
-                    .into(
-                            imgArticleHero
-                    );
-
-        } else {
-
-            imgArticleHero.setImageResource(
-                    R.drawable.ic_legalrights
             );
         }
 

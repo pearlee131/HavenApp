@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F6FF">
+
+
+    <!-- ================================================= -->
+    <!-- FIXED WELCOME HEADER -->
+    <!-- ================================================= -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/headerCard"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/home_header_height"
+        android:layout_marginStart="@dimen/home_horizontal_margin"
+        android:layout_marginTop="@dimen/home_header_margin_top"
+        android:layout_marginEnd="@dimen/home_horizontal_margin"
+        android:backgroundTint="#4a2297"
+        app:cardCornerRadius="@dimen/home_header_radius"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- PROFILE -->
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="@dimen/home_header_profile_size"
+                android:layout_height="@dimen/home_header_profile_size"
+                android:layout_marginStart="14dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+            <!-- WELCOME -->
+
+            <TextView
+                android:id="@+id/welcomeText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:text="Welcome User!"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/home_welcome_text_size"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintStart_toEndOf="@id/profileImage"
+                app:layout_constraintEnd_toStartOf="@id/notificationButton"
+                app:layout_constraintTop_toTopOf="@id/profileImage" />
+
+
+            <!-- SUPPORT TEXT -->
+
+            <TextView
+                android:id="@+id/supportText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:text="Support is just a tap away."
+                android:textColor="#EEE6FF"
+                android:textSize="@dimen/home_support_text_size"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintStart_toEndOf="@id/profileImage"
+                app:layout_constraintEnd_toStartOf="@id/notificationButton"
+                app:layout_constraintTop_toBottomOf="@id/welcomeText" />
+
+            <!-- ================================================= -->
+            <!-- NOTIFICATION WITH UNREAD BADGE -->
+            <!-- ================================================= -->
+
+            <FrameLayout
+                android:id="@+id/notificationContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <!-- EXISTING NOTIFICATION BUTTON -->
+                <!-- ID IS PRESERVED -->
+
+                <ImageView
+                    android:id="@+id/notificationButton"
+                    android:layout_width="@dimen/home_notification_size"
+                    android:layout_height="@dimen/home_notification_size"
+                    android:padding="4dp"
+                    android:src="@drawable/notification_button"
+                    android:contentDescription="Notifications" />
+
+
+                <!-- UNREAD COUNT BADGE -->
+
+                <TextView
+                    android:id="@+id/txtNotificationBadge"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="@drawable/bg_notification_badge"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:minWidth="18dp"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="3dp"
+                    android:text="2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <!-- ================================================= -->
+    <!-- SCROLLABLE CONTENT -->
+    <!-- ================================================= -->
+
+    <!-- ================================================= -->
+    <!-- FIXED EMERGENCY CONTENT -->
+    <!-- ================================================= -->
+
+    <LinearLayout
+        android:id="@+id/fixedEmergencyContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#F9F6FF"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/headerCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- ================================================= -->
+        <!-- EMERGENCY TITLE -->
+        <!-- ================================================= -->
+
+        <TextView
+            android:id="@+id/emergencyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚠  Emergency Panic Button"
+            android:fontFamily="@font/poppins_bold"
+            android:textStyle="bold"
+            android:textColor="#D80000"
+            android:textSize="@dimen/emergency_title_size" />
+
+
+        <!-- ================================================= -->
+        <!-- DESCRIPTION -->
+        <!-- ================================================= -->
+
+        <TextView
+            android:id="@+id/emergencyDesc"
+            android:layout_width="@dimen/emergency_description_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Press and hold for 3 seconds to connect for emergency assistance. This will call the VAWC Personnel of your barangay."
+            android:textColor="#444444"
+            android:textSize="@dimen/emergency_description_text_size" />
+
+
+        <!-- ================================================= -->
+        <!-- PANIC BUTTON -->
+        <!-- ================================================= -->
+
+        <FrameLayout
+            android:id="@+id/panicContainer"
+            android:layout_width="@dimen/panic_ring_size"
+            android:layout_height="@dimen/panic_ring_size"
+            android:layout_marginTop="6dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <!-- OUTER RING -->
+
+            <!-- ACTUAL PANIC BUTTON -->
+
+            <ImageView
+                android:id="@+id/panicRing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:contentDescription="Panic button ring"
+                android:focusable="false"
+                android:rotation="0"
+                android:scaleType="fitCenter"
+                android:src="@drawable/panic_ring" />
+
+            <ImageButton
+                android:id="@+id/panicButton"
+                android:layout_width="139dp"
+                android:layout_height="159dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:contentDescription="Emergency Panic Button"
+                android:focusable="true"
+                android:rotation="0"
+                android:scaleType="fitCenter"
+                android:src="@drawable/panic_button" />
+
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+
+    <!-- SMALL WHITE SEPARATOR UNDER PANIC BUTTON -->
+    <View
+        android:id="@+id/panicScrollSeparator"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/panicScrollSeparator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- ================================================= -->
+    <!-- SCROLLABLE CONTENT: LOCATION TO PRIVACY & SECURITY -->
+    <!-- ================================================= -->
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/homeScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="7dp"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:fadingEdge="none"
+        android:background="#F9F6FF"
+        android:paddingBottom="24dp"
+        app:layout_constraintTop_toBottomOf="@id/fixedEmergencyContent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="24dp">
+
+            <!-- ================================================= -->
+            <!-- SHARE CURRENT LOCATION -->
+            <!-- ================================================= -->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/locationCard"
+                android:layout_width="@dimen/location_card_width"
+                android:layout_height="@dimen/location_card_height"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@android:color/white"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/location_icon_size"
+                        android:layout_height="@dimen/location_icon_size"
+                        android:src="@drawable/location_button"
+                        android:contentDescription="Location" />
+
+                    <TextView
+                        android:id="@+id/locationText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:layout_weight="1"
+                        android:text="Share Current Location"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#444444"
+                        android:textSize="@dimen/location_text_size" />
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/ic_arrow_right"
+                        android:contentDescription="Open" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- ================================================= -->
+            <!-- CALL BUTTONS -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+                android:id="@+id/callButtonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="@dimen/home_content_margin"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="@dimen/home_content_margin"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <!-- CALL 911 -->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card911"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/call_card_height"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFF1F1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/call_icon_size"
+                            android:layout_height="@dimen/call_icon_size"
+                            android:contentDescription="Call 911"
+                            android:src="@drawable/call_button" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Call 911"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="#111111"
+                            android:textSize="@dimen/call_text_size"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- CALL MSWDO -->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardMSWDO"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/call_card_height"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFF1F1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="30dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/call_icon_size"
+                            android:layout_height="@dimen/call_icon_size"
+                            android:src="@drawable/call_button"
+                            android:contentDescription="Call MSWDO" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Call MSWDO"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="#111111"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/call_text_size" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- DISCLAIMER -->
+            <!-- ================================================= -->
+
+            <TextView
+                android:id="@+id/disclaimerText"
+                android:layout_width="@dimen/disclaimer_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:text="If you are in immediate danger, call 911 directly. This app is supplemental to, not a replacement for emergency services."
+                android:textColor="#666666"
+                android:textSize="@dimen/disclaimer_text_size"
+                android:textStyle="italic" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/privacyCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/home_content_margin"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="@dimen/home_content_margin"
+                android:backgroundTint="#FFFFFF"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/privacy_padding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Privacy &amp; Security"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#222222"
+                        android:textSize="@dimen/privacy_title_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="• All reports and data you share are treated with strict confidentiality and can only be accessed by authorized VAWC personnel and MSWDO."
+                        android:textColor="#555555"
+                        android:textSize="@dimen/privacy_text_size"
+                        android:lineSpacingExtra="1dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="• Your information is encrypted and stored securely to prevent unauthorized access."
+                        android:textColor="#555555"
+                        android:textSize="@dimen/privacy_text_size"
+                        android:lineSpacingExtra="1dp" />
+
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ================================================= -->
+    <!-- FLOATING / MOVABLE HOPE ASSISTANT -->
+    <!-- ================================================= -->
+
+    <ImageView
+        android:id="@+id/cardHopeAssistant"
+        android:layout_width="78dp"
+        android:layout_height="78dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="10dp"
+        android:background="@null"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="Open Hope Assistant"
+        android:elevation="12dp"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_chatbot"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- ================================================= -->
+    <!-- FIXED BOTTOM NAVBAR -->
+    <!-- ================================================= -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottomNavbar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/navbar_height"
+        android:layout_marginStart="@dimen/navbar_margin_horizontal"
+        android:layout_marginEnd="@dimen/navbar_margin_horizontal"
+        android:layout_marginBottom="@dimen/navbar_margin_bottom"
+        android:backgroundTint="#F0E8FF"
+        app:cardCornerRadius="35dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+
+            <!-- HOME -->
+
+            <LinearLayout
+                android:id="@+id/navHome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/homeIcon"
+                    android:layout_width="@dimen/navbar_icon_size"
+                    android:layout_height="@dimen/navbar_icon_size"
+                    android:src="@drawable/home_button"
+                    android:contentDescription="Home" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/navbar_text_margin_top"
+                    android:text="Home"
+                    android:textStyle="bold"
+                    android:textColor="#6C2BD9"
+                    android:textSize="@dimen/navbar_text_size" />
+
+            </LinearLayout>
+
+
+            <!-- SUPPORT -->
+
+            <LinearLayout
+                android:id="@+id/navSupport"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/navbar_icon_size"
+                    android:layout_height="@dimen/navbar_icon_size"
+                    android:src="@drawable/support_button"
+                    android:contentDescription="Support" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/navbar_text_margin_top"
+                    android:text="Support"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/navbar_text_size" />
+
+            </LinearLayout>
+
+
+            <!-- EXPLORE -->
+
+            <LinearLayout
+                android:id="@+id/navExplore"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/navbar_icon_size"
+                    android:layout_height="@dimen/navbar_icon_size"
+                    android:src="@drawable/explore_button"
+                    android:contentDescription="Explore" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/navbar_text_margin_top"
+                    android:text="Explore"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/navbar_text_size" />
+
+            </LinearLayout>
+
+
+            <!-- PROFILE -->
+
+            <LinearLayout
+                android:id="@+id/navProfile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/navbar_icon_size"
+                    android:layout_height="@dimen/navbar_icon_size"
+                    android:src="@drawable/profile_button"
+                    android:contentDescription="Profile" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/navbar_text_margin_top"
+                    android:text="Profile"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/navbar_text_size" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
